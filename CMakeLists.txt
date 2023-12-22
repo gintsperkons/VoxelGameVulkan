@@ -35,7 +35,13 @@ add_executable (VoxelGameVulkan  "Game/main.cpp"
 "GameEngine/Engine/Core/Rendering/Vulkan/VulkanRenderer.h"
 "GameEngine/Engine/Core/Window/WindowManager.cpp" 
 "GameEngine/Engine/Core/Window/WindowManager.h"
-)
+ "GameEngine/Engine/Core/Window/Window.cpp" 
+ "GameEngine/Engine/Core/Window/Window.h" 
+ "GameEngine/Engine.cpp" 
+ "GameEngine/Engine/Core/Rendering/Renderer.h" 
+ "GameEngine/Engine/Core/Rendering/Renderer.cpp" 
+ "GameEngine/Engine/Core/Rendering/Vulkan/VulkanValidation.h" 
+ "GameEngine/Engine/Core/Rendering/Vulkan/VulkanValidation.cpp")
 
 #Link libraries
 target_link_libraries(VoxelGameVulkan glfw3.lib vulkan-1.lib)

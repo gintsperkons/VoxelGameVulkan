@@ -1,28 +1,27 @@
+
+//Libraries
 #define GLFW_INCLUDE_VULKAN
 
+//Inbuilt
 #include <stdexcept>
 #include <vector>
 #include <iostream>
 
-#include "../GameEngine/Engine/Core/Window/WindowManager.h"
-#include "../GameEngine/Engine/Core/Rendering/Vulkan/VulkanRenderer.h"
+//SourceCode
+#include "../GameEngine/Engine.h"
+
+
 
 int main()
 {
-	// Create window
-	WindowManager::GetInstance()->InitWindow("Vulkan Voxels", 1080, 720);
+	Engine::GetInstance()->Init();
+	WindowManager::GetInstance()->GetWindow("main")->SetTitle("Voxel Game");
 
-	// Create Vulkan Renderer instance
-	if (VulkanRenderer::GetInstance()->Init(WindowManager::GetInstance()->GetWindow()) == EXIT_FAILURE)
-		return EXIT_FAILURE;
 
 	//Main loop until window is closed
-	while (!WindowManager::GetInstance()->WindowShouldClose())
+	while (!Engine::GetInstance()->ShouldStop())
 	{
-		WindowManager::GetInstance()->PollEvents();
+		Engine::GetInstance()->Update();
 	}
-std::cout << "Hello World" << std::endl;
-	WindowManager::DestroyInstance();
-	VulkanRenderer::DestroyInstance();
 	return 0;
 }
