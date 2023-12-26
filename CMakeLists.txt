@@ -1,7 +1,7 @@
 ﻿# CMakeList.txt : CMake project for VoxelGameVulkan, include source and define
 # project specific logic here.
 #
-cmake_minimum_required (VERSION 3.8)
+cmake_minimum_required (VERSION 3.23)
 
 # Enable Hot Reload for MSVC compilers if supported.
 if (POLICY CMP0141)
@@ -20,6 +20,7 @@ endif()
 message("CMAKE_GENERATOR_PLATFORM is ${CMAKE_SIZEOF_VOID_P}")
 message("CMAKE_GENERATOR_PLATFORM is ${ARCH}")
 
+
 if(ARCH STREQUAL "x64")
 include_directories("${CMAKE_SOURCE_DIR}/Libraries/x64/include" "C:/VulkanSDK/1.3.261.1/Include")
 link_directories("${CMAKE_SOURCE_DIR}/Libraries/x64/lib" "C:/VulkanSDK/1.3.261.1/Lib")
@@ -30,21 +31,14 @@ endif()
 
 
 # Add source to this project's executable.
-add_executable (VoxelGameVulkan  "Game/main.cpp" 
-"GameEngine/Engine/Core/Rendering/Vulkan/VulkanRenderer.cpp" 
-"GameEngine/Engine/Core/Rendering/Vulkan/VulkanRenderer.h"
-"GameEngine/Engine/Core/Window/WindowManager.cpp" 
-"GameEngine/Engine/Core/Window/WindowManager.h"
- "GameEngine/Engine/Core/Window/Window.cpp" 
- "GameEngine/Engine/Core/Window/Window.h" 
- "GameEngine/Engine.cpp" 
- "GameEngine/Engine/Core/Rendering/Renderer.h" 
- "GameEngine/Engine/Core/Rendering/Renderer.cpp" 
- "GameEngine/Engine/Core/Rendering/Vulkan/VulkanValidation.h" 
- "GameEngine/Engine/Core/Rendering/Vulkan/VulkanValidation.cpp")
+add_executable (VoxelGameVulkan  "Game/main.cpp" )
+
+
+
+add_subdirectory("GameEngine")
 
 #Link libraries
-target_link_libraries(VoxelGameVulkan glfw3.lib vulkan-1.lib)
+target_link_libraries(VoxelGameVulkan GameEngine Core glfw3 vulkan-1)
 
 
 
