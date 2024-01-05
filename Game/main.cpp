@@ -22,6 +22,7 @@ int main()
 	while (!Engine::GetInstance()->ShouldStop())
 	{
 		Engine::GetInstance()->Update();
+		Engine::GetInstance()->Draw();
 	}
 	return 0;
 }
