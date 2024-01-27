@@ -1,7 +1,10 @@
 #Shader Compiled Spv files
 *.spv
 
+
+
 #---
+.vscode
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
