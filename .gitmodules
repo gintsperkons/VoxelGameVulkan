@@ -1,4 +1,0 @@
-[submodule "GameEngine"]
-	path = GameEngine
-	url = git@github.com:gintsperkons/GameEngine.git
-	branch = development
