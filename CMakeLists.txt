@@ -17,16 +17,14 @@ elseif(CMAKE_SIZEOF_VOID_P EQUAL 4)
   set(ARCH "x86")
 endif()
 
-message("CMAKE_GENERATOR_PLATFORM is ${CMAKE_SIZEOF_VOID_P}")
-message("CMAKE_GENERATOR_PLATFORM is ${ARCH}")
 
 
 if(ARCH STREQUAL "x64")
-include_directories("${CMAKE_SOURCE_DIR}/Libraries/x64/include" "C:/VulkanSDK/1.3.261.1/Include")
-link_directories("${CMAKE_SOURCE_DIR}/Libraries/x64/lib" "C:/VulkanSDK/1.3.261.1/Lib")
+include_directories("${CMAKE_SOURCE_DIR}/GameEngine/Libraries/x64/include" "C:/VulkanSDK/1.3.261.1/Include")
+link_directories("${CMAKE_SOURCE_DIR}/GameEngine/Libraries/x64/lib" "C:/VulkanSDK/1.3.261.1/Lib")
 elseif(ARCH STREQUAL "x86")
-include_directories("${CMAKE_SOURCE_DIR}/Libraries/x86/include" "C:/VulkanSDK/1.3.261.1/Include")
-link_directories("${CMAKE_SOURCE_DIR}/Libraries/x86/lib" "C:/VulkanSDK/1.3.261.1/Lib32")
+include_directories("${CMAKE_SOURCE_DIR}/GameEngine/Libraries/x86/include" "C:/VulkanSDK/1.3.261.1/Include")
+link_directories("${CMAKE_SOURCE_DIR}/GameEngine/Libraries/x86/lib" "C:/VulkanSDK/1.3.261.1/Lib32")
 endif()
 
 
@@ -36,6 +34,7 @@ add_executable (VoxelGameVulkan  "Game/main.cpp" )
 
 
 add_subdirectory("GameEngine")
+add_dependencies(${PROJECT_NAME} build_shaders)
 
 #Link libraries
 target_link_libraries(VoxelGameVulkan GameEngine Core glfw3 vulkan-1)
